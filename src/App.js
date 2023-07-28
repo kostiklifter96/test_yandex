@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import { Buttons } from "./components/buttons/Buttons";
+import { FilesList } from "./components/files_list/FilesList";
 
 function App() {
+  const [files, setFiles] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Buttons files={files} setFiles={setFiles} />
+
+      <div className="files_list">
+        <TransitionGroup>
+          {files.length > 0 &&
+            files.map((el) => (
+              <CSSTransition key={el.name} timeout={500} classNames="item">
+                <FilesList file={el} files={files} setFiles={setFiles} />
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
+      </div>
     </div>
   );
 }

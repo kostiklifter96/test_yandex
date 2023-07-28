@@ -1,0 +1,5 @@
+{
+  "importOrder": ["^[./]", "./index.css"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
