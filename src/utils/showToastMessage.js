@@ -31,6 +31,74 @@ export const showToastMessage = (sendStatus) => {
       );
       break;
 
+    case 400:
+      toast.error(`Некорректные данные.`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      break;
+
+    case 401:
+      toast.error(`Пользователь не авторизован.`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      break;
+
+    case 403:
+      toast.error(
+        `API недоступно. Ваши файлы занимают больше места, чем у вас есть. Удалите лишнее или увеличьте объём Диска.`,
+        {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      break;
+
+    case 406:
+      toast.error(`Ресурс не может быть представлен в запрошенном формате.`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      break;
+
+    case 409:
+      toast.error(`Указанного пути "{path}" не существует.`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      break;
+
     case 412:
       toast.error(
         `${sendStatus.elem} при дозагрузке файла был передан неверный диапазон в заголовке Content-Range.`,
@@ -61,6 +129,34 @@ export const showToastMessage = (sendStatus) => {
           theme: "dark",
         }
       );
+      break;
+
+    case 423:
+      toast.error(
+        `Технические работы. Сейчас можно только просматривать и скачивать файлы.`,
+        {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      break;
+    case 429:
+      toast.error(`Слишком много запросов.`, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       break;
 
     case 500 || 503:

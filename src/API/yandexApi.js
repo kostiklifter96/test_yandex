@@ -18,6 +18,10 @@ export class YandexApi {
         );
         const data = await res.json();
 
+        if (!res.status !== 200) {
+          setSendStatus({ elem: null, status: res.status });
+        }
+
         this.sendFile(setFiles, files[i], data, setSendStatus);
       }
     } catch (error) {
