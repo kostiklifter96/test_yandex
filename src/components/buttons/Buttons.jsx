@@ -1,11 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { YandexApi } from "../../API/yandexApi";
+import { showToastMessage } from "../../utils/showToastMessage";
 import "./buttons.css";
 
 export const Buttons = ({ files, setFiles }) => {
   const inputFileRef = useRef(null);
-  const [sendStatus, setSendStatus] = useState("null");
+  const [sendStatus, setSendStatus] = useState({
+    elem: null,
+    status: null,
+  });
 
   const handleChange = (e) => {
     setFiles([...e.target.files]);
@@ -16,11 +22,13 @@ export const Buttons = ({ files, setFiles }) => {
     YandexApi.getURL(files, setFiles, setSendStatus);
   };
 
+  useEffect(() => {
+    showToastMessage(sendStatus);
+  }, [sendStatus]);
+
   return (
     <>
-      {sendStatus === 201 && (
-        <h1 style={{ color: "white", right: 0, top: 0 }}>sending</h1>
-      )}
+      <ToastContainer />
       <button className="btn" onClick={() => inputFileRef.current.click()}>
         {files.length < 1
           ? "Выберите файлы"

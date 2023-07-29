@@ -40,11 +40,9 @@ export class YandexApi {
         setFiles((f) => f.filter((el) => el.size !== elem.size));
       }
 
-      setSendStatus(res.status);
+      setSendStatus({ elem: elem.name, status: res.status });
 
-      setTimeout(() => {
-        setSendStatus(null);
-      }, 500);
+      return res.status;
     } catch (error) {
       console.log(error.message);
     }
